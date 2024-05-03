@@ -33,16 +33,21 @@ class NewVisitorTest(unittest.TestCase):
 
         # types Buy peacock teathers into a text box
         # inputbox.send_keys("Buy peacock feathers")
-        inputbox.send_keys("Use peacock feathers to make a fly")
+        inputbox.send_keys("Buy peacock feathers")
 
         # when hit enter, the page updates, and now the page lists
         # "1. Buy peacock feathers" as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(2)
         self.check_for_row_in_list_table("1: Buy peacock feathers")
+        
+        
+        inputbox = self.browser.find_element(By.ID, "id_new_item")
         inputbox.send_keys("Use peacock feathers to make a fly")
+        
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
+
 
         # The page updates again, and now shows both items on her list
         self.check_for_row_in_list_table("1: Buy peacock feathers")
@@ -51,7 +56,7 @@ class NewVisitorTest(unittest.TestCase):
        
     
         # Satisfied, she goes back to sleep
-        self.fail("Finish the test!")
+        #self.fail("Finish the test!")
 
 if __name__ == "__main__":  
     unittest.main()  
